@@ -64,11 +64,10 @@ class Root():
         '''
         Initialize a New Game
         '''
-        global mode, games, pc_score, Inp_score
         self.root.destroy()
-        Inp_score = 0
-        pc_score = 0
-        games = 0
+        Root.Inp_score = 0
+        Root.pc_score = 0
+        Root.games = 0
         self.createWindow()
 
     def helpwindow(self):
@@ -95,11 +94,10 @@ class Root():
         return self
 
     def setmode(self, choice):
-        global mode, games, pc_score, Inp_score
         if choice:
-            mode = ['white', 'black', 'white']
+            Root.mode = ['white', 'black', 'white']
         else:
-            mode=['black', 'white', 'gray']
+            Root.mode=['black', 'white', 'gray']
         self.refresh()
         return self
 
@@ -110,32 +108,31 @@ class Root():
 
     def getInp(self, Inp):
         '''take input from user'''
-        global mode, games, pc_score, Inp_score
         pc = random.choice(['rock', 'paper', 'scissor'])
-        games += 1
+        Root.games += 1
         if(pc == Inp):
             res = "GAME DRAWN!!"
         elif(pc == "rock"):
             if(Inp == "paper"):
                 res = "YOU WON"
-                Inp_score += 1
+                Root.Inp_score += 1
             else:
                 res = "YOU LOST"
-                pc_score += 1
+                Root.pc_score += 1
         elif(pc == "paper"):
             if(Inp == "scissor"):
                 res = "YOU WON"
-                Inp_score += 1
+                Root.Inp_score += 1
             else:
                 res = "YOU LOST"
-                pc_score += 1
+                Root.pc_score += 1
         elif(pc == "scissor"):
             if(Inp == "rock"):
                 res = "YOU WON"
-                Inp_score += 1
+                Root.Inp_score += 1
             else:
                 res = "YOU LOST"
-                pc_score += 1
+                Root.pc_score += 1
         info = '''
     YOU       :   {0}
     COMPUTER  :   {1}
